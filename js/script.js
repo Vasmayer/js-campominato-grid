@@ -9,36 +9,38 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro. */
 
 /* FUNCTIONS */
 
-const getRandomNumber = (min,max) => Math.floor(Math.random() * (max - min)) + min;
+const getRandomNumber = (min,max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const getUniqueRandomNumber = (min,max,listNumbers) =>
-{
-    /* do{
+{ let rdnNumber;
+    do{
         rdnNumber = getRandomNumber(min,max);
-    }while(listNumbers.includes(rdnNumber)) */
-     rdnNumber = 3;
+    }while(listNumbers.includes(rdnNumber))
 
      console.table(listNumbers);
 
     return rdnNumber;
+
+    
 }
-const createGrid = (columns,rows,gridElement,list) => 
+const createGrid = (columns,gridElement,list) => 
 {
-    for(let i = 0 ; i < rows ; i++)
-    {
-        for(let j = 0 ; j < columns ; j++)
+    let rdnNumber;
+
+        for(let j = 0 ; j < columns*columns ; j++)
         {
             let cell = document.createElement('div');
-            cell.style.width = `calc( 100% / ${columns}`;
-            cell.style.height = `calc( 100% / ${rows}`;
+            const dimensions = `calc( 100% / ${columns}`
+            cell.style.width = dimensions;
+            cell.style.height = dimensions;
             cell.className = 'cells';
-             const rdnNumber  = getUniqueRandomNumber(1,columns * rows,list);
+            rdnNumber  = getUniqueRandomNumber(1,columns * rows,list);
+            console.table(list);
             list.push(rdnNumber);
             console.log(rdnNumber);
             cell.innerText = rdnNumber; 
             gridElement.appendChild(cell);
 
         }
-    }
 } 
 
 
@@ -62,19 +64,19 @@ selectElement.addEventListener('change',(e) => {
         {
             case '1':
                 /* 10 X 10 */
-                createGrid(10,10,gridElement,listRdnNumbers);
+                createGrid(10,gridElement,listRdnNumbers);
 
             break;
 
             case '2':
                 /* 9 X 9 */
-                createGrid(9,9,gridElement,listRdnNumbers);
+                createGrid(9,gridElement,listRdnNumbers);
 
             break;
 
             case '3':
                 /* 7 X 7 */
-                createGrid(7,7,gridElement,listRdnNumbers);
+                createGrid(7,gridElement,listRdnNumbers);
 
             break;
         }
