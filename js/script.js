@@ -10,7 +10,18 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro. */
 /* FUNCTIONS */
 
 const getRandomNumber = (min,max) => Math.floor(Math.random() * (max - min)) + min;
-const createGrid = (columns,rows,gridElement) => 
+const getUniqueRandomNumber = (min,max,listNumbers) =>
+{
+    /* do{
+        rdnNumber = getRandomNumber(min,max);
+    }while(listNumbers.includes(rdnNumber)) */
+     rdnNumber = 3;
+
+     console.table(listNumbers);
+
+    return rdnNumber;
+}
+const createGrid = (columns,rows,gridElement,list) => 
 {
     for(let i = 0 ; i < rows ; i++)
     {
@@ -20,7 +31,10 @@ const createGrid = (columns,rows,gridElement) =>
             cell.style.width = `calc( 100% / ${columns}`;
             cell.style.height = `calc( 100% / ${rows}`;
             cell.className = 'cells';
-            cell.innerText = `1`
+             const rdnNumber  = getUniqueRandomNumber(1,columns * rows,list);
+            list.push(rdnNumber);
+            console.log(rdnNumber);
+            cell.innerText = rdnNumber; 
             gridElement.appendChild(cell);
 
         }
@@ -30,13 +44,15 @@ const createGrid = (columns,rows,gridElement) =>
 
 /* RECUPERO GLI ELEMENTI DAL DOM E CREO LE VARIABILI CHE MI SERVONO */
 const selectElement = document.getElementById('select');
-const listRdnNumbers = [];
+
 
 selectElement.addEventListener('change',(e) => {
 
     const gridElement = document.getElementById('grid');
     gridElement.innerHTML = '';
-    const selectValue = e.target.value; 
+    const selectValue = e.target.value;
+    const listRdnNumbers = []; 
+
 
     if(selectValue)
     {
@@ -46,19 +62,19 @@ selectElement.addEventListener('change',(e) => {
         {
             case '1':
                 /* 10 X 10 */
-                createGrid(10,10,gridElement);
+                createGrid(10,10,gridElement,listRdnNumbers);
 
             break;
 
             case '2':
                 /* 9 X 9 */
-                createGrid(9,9,gridElement);
+                createGrid(9,9,gridElement,listRdnNumbers);
 
             break;
 
             case '3':
                 /* 7 X 7 */
-                createGrid(7,7,gridElement);
+                createGrid(7,7,gridElement,listRdnNumbers);
 
             break;
         }
