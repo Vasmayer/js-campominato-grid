@@ -8,17 +8,26 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro. */
 /* console.log('JS OK'); */
 
 /* FUNCTIONS */
-
+const createGrid = (columns,rows,gridElement) => 
+{
+    for(let i = 0 ; i < rows ; i++)
+    {
+        for(let j = 0 ; j < columns ; j++)
+        {
+            
+        }
+    }
+} 
 
 
 /* RECUPERO GLI ELEMENTI DAL DOM */
-const gridElement = document.getElementById('grind');
 const selectElement = document.getElementById('select');
 
 selectElement.addEventListener('change',(e) => {
 
+    const gridElement = document.getElementById('grind');
     const selectValue = e.target.value; 
-    
+
     if(selectValue)
     {
         console.log(selectValue)
@@ -26,14 +35,20 @@ selectElement.addEventListener('change',(e) => {
         switch(selectValue)
         {
             case '1':
+                /* 10 X 10 */
+                createGrid(10,10,gridElement);
 
             break;
 
             case '2':
+                /* 9 X 9 */
+                createGrid(10,10,gridElement);
 
             break;
 
             case '3':
+                /* 7 X 7 */
+                createGrid(10,10,gridElement);
 
             break;
         }
