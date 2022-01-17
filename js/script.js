@@ -33,7 +33,7 @@ const createGrid = (columns,gridElement,list) =>
             cell.style.width = dimensions;
             cell.style.height = dimensions;
             cell.className = 'cells';
-            rdnNumber  = getUniqueRandomNumber(1,columns * rows,list);
+            rdnNumber  = getUniqueRandomNumber(1,columns * columns,list);
             console.table(list);
             list.push(rdnNumber);
             console.log(rdnNumber);
