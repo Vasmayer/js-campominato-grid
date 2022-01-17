@@ -38,6 +38,11 @@ const createGrid = (columns,gridElement,list) =>
             list.push(rdnNumber);
             console.log(rdnNumber);
             cell.innerText = rdnNumber; 
+            cell.addEventListener('click',() => {
+            
+                cell.classList.toggle('clicked');
+            
+            });
             gridElement.appendChild(cell);
 
         }
